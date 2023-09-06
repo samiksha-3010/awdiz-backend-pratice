@@ -4,8 +4,8 @@
  export  const Register = async(req,res)=>{
   try {
     const {userData} = req.body;
-    const { name,email,password,number} = userData;
-    if(!name || !email|| !password|| !number)
+    const { name,email,password,number,role} = userData;
+    if(!name || !email|| !password|| !number||role)
     return res.json({
    success:false,message:"All Fields Are Mandotary"
   })

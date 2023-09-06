@@ -29,8 +29,4 @@ const userSchema = new Schema;({
         type:String
      }
 })
-
-
-
-
 export default Mongoose.model("User","newSchema")
