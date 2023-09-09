@@ -1,0 +1,33 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+.register-style{
+    border: 1px solid black;
+    width: 35%;
+    margin: auto;
+    background-color: red;
+    margin-top: 60px;
+    height: 450px;
+}
+.register-value{
+ margin-left: 40%;
+    width: 20%;
+    height: 30px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    margin-top: 20px;
+}
+.label-styyle{
+     margin-left: 40%;
+     font-size: 20px;
+     color: white;
+
+}
+.input-style{
+    width: 78%;
+    height: 30px;
+    margin-left: 15%;
+}

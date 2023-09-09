@@ -2,8 +2,7 @@ import  express  from "express";
 import dotenv from "dotenv"
 import cors from "cors"
 import morgan from "morgan"
-// import mongoose, { connect } from "mongoose";
-import { Login, Register } from "./CONTROOLERS/User.Controolers.js";
+import { Login, Register, getCurrentUser } from "./CONTROOLERS/User.Controolers.js";
 import mongoose from "mongoose";
 
 
@@ -21,6 +20,7 @@ app.get("/",(req,res)=>{
 // allUser
 app.post("/register",Register)
 app.post("/login",Login)
+app.post("/get-current-user",getCurrentUser)
 
 
 mongoose.connect(process.env.Mongo_URL).then(()=>{

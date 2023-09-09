@@ -3,6 +3,8 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Home } from './Component/Home';
 import Navbar from './Component/Navbar'
+import Register from './Component/Register';
+import Login from './Component/Login';
 
 function App() {
   return (
@@ -10,11 +12,14 @@ function App() {
       <Navbar/>
       <Routes>
         <Route exact path='/'element={<Home/>}/>
+        <Route exact path='/register-pratice'element={<Register/>}/>
+        <Route exact path='/login-pratice'element={<Login/>}/>
+
       
       </Routes>
      
 
-     <h2>Home</h2>
+  
     </div>
   );
 }
