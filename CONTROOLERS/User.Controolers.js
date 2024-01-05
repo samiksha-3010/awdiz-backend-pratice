@@ -1,10 +1,11 @@
  import bcrypt from 'bcrypt'
  import jwt from 'jsonwebtoken'
+import UserModal from '../MODAL/User.Modal.js';
 
  export  const Register = async(req,res)=>{
   try {
-    const {userData} = req.body;
-    const { name,email,password,number,role} = userData;
+    // const {userData} = req.body;
+    const { name,email,password,number,role}= req.body;
     if(!name || !email|| !password|| !number|| !role)
     return res.json({
    success:false,message:"All Fields Are Mandotary"
@@ -23,7 +24,6 @@
     
   } catch (error) {
     return res.json({success: false, message: error.message})
- 
     
   }
  }
@@ -33,17 +33,17 @@
     if(!email || !password)
     return res.json ({success:false,message:"All Fields Are Mandotory"})
 
-    const  user = await UserModal.findone({email:email})
+    const user = await UserModal.findone({email:email})
     if(!user)
     return res.json({success:false,message:"User Not Found"})
-    if (user.isBlocked) {
-      return res.json({
-        success: false,
-        message: "You are Blocked Contact us.",
-      });
-    }
+    // if (user.isBlocked) {
+    //   return res.json({
+    //     success: false,
+    //     message: "You are Blocked Contact us.",
+    //   });
+    // }   
 
-    const  isPassworrdRight = await bcrypt.compare(password.user.password)
+    const isPassworrdRight = await bcrypt.compare(password,user.password)
    if( isPassworrdRight){
     const userObject ={
       name:user.name,
@@ -52,7 +52,7 @@
       role:user.role
     };
     const token = jwt.sign({userId:user._id},process.env.JWT_SECRET)
-    return res.json({success:true,message:"Login Succesfull",user:"userObject",token:"token"})
+    return res.json({success:true,message:"Login Succesfull",user:userObject,token:token})
    }
    return res.json ({success:false,message:"Password is not Match"})
   } catch (error) {
