@@ -2,8 +2,8 @@ import  express  from "express";
 import dotenv from "dotenv"
 import cors from "cors"
 import morgan from "morgan"
-import { Login, Register, getCurrentUser } from "./CONTROOLERS/User.Controolers.js";
 import mongoose from "mongoose";
+import { Login, Register, getCurrentUser } from "./Controoler/UserControoler.js";
 
 
 const app = express();
@@ -21,7 +21,6 @@ app.get("/",(req,res)=>{
 app.post("/register",Register)
 app.post("/login",Login)
 app.post("/get-current-user",getCurrentUser)
-
 
 mongoose.connect(process.env.Mongo_URL).then(()=>{
     console.log("connect to DB...." )
